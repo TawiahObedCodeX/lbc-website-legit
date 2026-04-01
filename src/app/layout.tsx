@@ -1,15 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { Suspense } from "react";
 
-// Professional Metadata for 2026 SEO
 export const metadata: Metadata = {
   title: "Lakeside Baptist Church | Welcome Home",
-  description: "A lighthouse for the lost, a home for the family, and a sanctuary for every soul seeking truth.",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  description:
+    "A lighthouse for the lost, a home for the family, and a sanctuary for every soul seeking truth.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -20,14 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* --- CRITICAL: THE METAMASK ERROR KILLER --- */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.addEventListener('unhandledrejection', function(event) {
-                // Silently catch and ignore MetaMask extension errors
                 if (event.reason && (
-                  event.reason.message?.includes('MetaMask') || 
+                  event.reason.message?.includes('MetaMask') ||
                   event.reason.message?.includes('nkbihfbeogaeaoehlefnkodbefgpgknn')
                 )) {
                   event.preventDefault();
@@ -37,18 +40,12 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* --- END ERROR KILLER --- */}
       </head>
-      <body className="antialiased bg-[#FDFCF8] text-primary overflow-x-hidden selection:bg-secondary selection:text-primary">
+      <body className="antialiased bg-background text-primary overflow-x-hidden selection:bg-secondary selection:text-primary">
         <Suspense fallback={<LoadingScreen />}>
-          {/* Main Site Structure */}
           <div className="relative flex flex-col min-h-screen">
             <Navbar />
-            
-            <main className="flex-grow">
-              {children}
-            </main>
-            
+            <main className="grow">{children}</main>
             <Footer />
           </div>
         </Suspense>
