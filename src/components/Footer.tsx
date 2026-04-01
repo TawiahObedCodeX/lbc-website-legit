@@ -11,6 +11,7 @@ export default function Footer() {
     { label: "Blog", href: "/blog" },
     { label: "Ministers", href: "/ministers" },
     { label: "Services", href: "/services" },
+    { label: "Sermon", href: "/sermons" },
     { label: "GIVE NOW", href: "/donation", highlight: true },
   ];
 

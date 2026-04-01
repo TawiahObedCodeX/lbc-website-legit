@@ -18,14 +18,14 @@ export default function ContactUI() {
   const intents = ["General", "Prayer Request", "Membership", "Counseling"];
 
   return (
-    <main ref={containerRef} className="bg-[#FDFCF8] min-h-screen selection:bg-[#F0C060] overflow-x-hidden">
+    <main ref={containerRef} className="bg-background min-h-screen selection:bg-[#F0C060] overflow-x-hidden">
       
       {/* --- CATCHY HERO --- */}
       <section className="min-h-[70vh] bg-[#0F0C1E] flex flex-col justify-center px-6 md:px-12 lg:px-20 relative overflow-hidden">
         <motion.div 
           animate={{ x: [-20, 20, -20] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-0 left-0 text-white/[0.02] text-[25vw] md:text-[35vw] lg:text-[45vw] font-black italic whitespace-nowrap leading-none select-none pointer-events-none"
+          className="absolute bottom-0 left-0 text-white/2 text-[25vw] md:text-[35vw] lg:text-[45vw] font-black italic whitespace-nowrap leading-none select-none pointer-events-none"
         >
           CONTACT LBC
         </motion.div>
@@ -88,12 +88,12 @@ export default function ContactUI() {
                     whileHover={{ x: 10 }}
                     className="flex gap-6 p-6 md:p-8 bg-white rounded-[2.5rem] shadow-xl border border-black/5 group cursor-pointer"
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-[#0F0C1E] text-[#F0C060] flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 rounded-2xl bg-[#0F0C1E] text-[#F0C060] flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
                     <div className="min-w-0">
                       <h5 className="text-[10px] font-black uppercase text-black/30 tracking-widest">{item.label}</h5>
-                      <p className="font-black text-[#0F0C1E] text-lg leading-tight break-words">{item.val}</p>
+                      <p className="font-black text-[#0F0C1E] text-lg leading-tight wrap-break-word">{item.val}</p>
                       <p className="text-xs text-[#5C5490] italic mt-1">{item.sub}</p>
                     </div>
                   </motion.div>
@@ -121,7 +121,7 @@ export default function ContactUI() {
                         className={`px-6 py-3.5 rounded-full font-black text-[10px] uppercase tracking-widest transition-all active:scale-95 ${
                           activeIntent === intent 
                           ? "bg-[#F0C060] text-[#0F0C1E] shadow-lg scale-105" 
-                          : "bg-[#FDFCF8] text-black/40 border border-black/5 hover:border-[#F0C060] hover:text-black/70"
+                          : "bg-background text-black/40 border border-black/5 hover:border-[#F0C060] hover:text-black/70"
                         }`}
                       >
                         {intent}
@@ -137,14 +137,14 @@ export default function ContactUI() {
                       <input 
                         type="text" 
                         placeholder="Your Name" 
-                        className="w-full bg-[#FDFCF8] border-none rounded-3xl p-7 md:p-8 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] text-base" 
+                        className="w-full bg-background border-none rounded-3xl p-7 md:p-8 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] text-base" 
                       />
                     </div>
                     <div className="group relative">
                       <input 
                         type="email" 
                         placeholder="Email Address" 
-                        className="w-full bg-[#FDFCF8] border-none rounded-3xl p-7 md:p-8 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] text-base" 
+                        className="w-full bg-background border-none rounded-3xl p-7 md:p-8 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] text-base" 
                       />
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function ContactUI() {
                     <textarea 
                       rows={7} 
                       placeholder="Write your message here..." 
-                      className="w-full bg-[#FDFCF8] border-none rounded-[3rem] p-7 md:p-10 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] resize-y min-h-[180px]" 
+                      className="w-full bg-background border-none rounded-[3rem] p-7 md:p-10 font-bold outline-none focus:ring-4 focus:ring-[#F0C060]/20 transition-all text-[#0F0C1E] resize-y min-h-[180px]" 
                     />
                   </div>
                   

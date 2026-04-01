@@ -82,7 +82,7 @@ export default function GalleryUI() {
       </section>
 
       {/* --- CTA --- */}
-      <section className="py-32 bg-[#FDFCF8] rounded-t-[3rem] md:rounded-t-[5rem] text-center px-6">
+      <section className="py-32 bg-background rounded-t-[3rem] md:rounded-t-[5rem] text-center px-6">
         <h2 className="text-[#0F0C1E] text-4xl md:text-8xl font-black tracking-tighter leading-none mb-12 uppercase">
           Become part <br /> of the <span className="text-[#F0C060] italic">story.</span>
         </h2>
@@ -129,13 +129,13 @@ function GalleryCard({ item, index }: { item: { id: number; url: string; title: 
       className="relative group rounded-3xl overflow-hidden bg-[#1A162E] inline-block w-full break-inside-avoid"
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0F0C1E] via-[#0F0C1E]/30 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-500 z-10" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#0F0C1E] via-[#0F0C1E]/30 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-500 z-10" />
 
       <img
         src={item.url}
         alt={item.title}
         loading="lazy"
-        className="w-full h-auto object-cover grayscale-[60%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+        className="w-full h-auto object-cover grayscale-60 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
       />
 
       {/* Caption */}

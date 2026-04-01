@@ -60,7 +60,7 @@ export default function HeroCarousel() {
             className="absolute inset-0"
           >
             {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
+            <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/80 z-10" />
 
             {/* Background Image */}
             <img

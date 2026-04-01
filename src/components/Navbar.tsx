@@ -38,7 +38,7 @@ export default function Navbar() {
   const primaryItems = ["Home", "About", "Services", "Blog"];
 
   // Secondary links hidden under "More" dropdown
-  const moreItems = ["Ministries", "Gallery", "Contact"];
+  const moreItems = ["Ministries", "Gallery", "Contact","Sermons"];
 
   // All items combined (for mobile full-screen menu)
   const allItems = [...primaryItems, ...moreItems, "Donation"];
@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+      className={`fixed top-0 w-full z-100 transition-all duration-500 ${
         scrolled
           ? "bg-[#0F0C1E]/85 backdrop-blur-xl py-3 shadow-[0_10px_30px_rgba(0,0,0,0.4)] border-b border-white/10"
           : "bg-transparent py-5 sm:py-6 lg:py-8"
@@ -68,7 +68,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 sm:gap-3 lg:gap-4 group shrink-0">
           <motion.div
             whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
-            className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-secondary to-[#8a6d3b] rounded-xl sm:rounded-2xl flex items-center justify-center p-1.5 sm:p-2 shadow-[0_0_20px_rgba(197,160,89,0.4)] border border-white/20"
+            className="relative w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-linear-to-br from-secondary to-[#8a6d3b] rounded-xl sm:rounded-2xl flex items-center justify-center p-1.5 sm:p-2 shadow-[0_0_20px_rgba(197,160,89,0.4)] border border-white/20"
           >
             <img
               src="https://i.pinimg.com/1200x/c0/d1/e1/c0d1e14223a03cf6209e66d284ab6bf2.jpg"
@@ -168,7 +168,7 @@ export default function Navbar() {
                     className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 bg-[#0F0C1E]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden"
                   >
                     {/* Decorative top accent */}
-                    <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-secondary to-transparent" />
+                    <div className="h-0.5 w-full bg-linear-to-r from-transparent via-secondary to-transparent" />
 
                     <div className="py-2 px-2">
                       {moreItems.map((item) => {
@@ -233,7 +233,7 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-[210] w-9 h-9 flex flex-col justify-center items-center gap-1.5"
+            className="relative z-210 w-9 h-9 flex flex-col justify-center items-center gap-1.5"
             aria-label="Toggle menu"
           >
             <motion.div
@@ -253,7 +253,7 @@ export default function Navbar() {
 
         {/* --- MOBILE TOGGLE (sm and below) --- */}
         <button
-          className="md:hidden relative z-[210] w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+          className="md:hidden relative z-210 w-10 h-10 flex flex-col justify-center items-center gap-1.5"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -280,7 +280,7 @@ export default function Navbar() {
             animate={{ opacity: 1, clipPath: "circle(150% at 95% 5%)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 95% 5%)" }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 bg-[#0F0C1E] z-[200] flex flex-col items-center justify-center p-6 sm:p-10 overflow-y-auto"
+            className="fixed inset-0 bg-[#0F0C1E] z-200 flex flex-col items-center justify-center p-6 sm:p-10 overflow-y-auto"
           >
             {/* Decorative Background Text */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03] select-none flex items-center justify-center">

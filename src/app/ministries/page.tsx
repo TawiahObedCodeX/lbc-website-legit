@@ -157,7 +157,7 @@ export default function MinistriesPage() {
         <motion.div 
           animate={{ x: [-20, 20, -20] }}
           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-0 text-white/[0.02] text-[40vw] font-black italic whitespace-nowrap leading-none select-none pointer-events-none"
+          className="absolute top-1/2 left-0 text-white/2 text-[40vw] font-black italic whitespace-nowrap leading-none select-none pointer-events-none"
         >
           LBC FAMILY
         </motion.div>

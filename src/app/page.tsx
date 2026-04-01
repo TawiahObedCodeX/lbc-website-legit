@@ -426,7 +426,7 @@ export default function Home() {
                       alt="Latest sermon"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <motion.div
                         whileHover={{ scale: 1.12 }}
@@ -498,7 +498,7 @@ export default function Home() {
                     transition={{ duration: 0.65, delay: s.delay * 0.12, ease }}
                     className="group flex gap-4 bg-white rounded-2xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-shadow duration-400 cursor-pointer border border-stone-50"
                   >
-                    <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+                    <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0">
                       <img
                         src={s.img}
                         alt={s.title}
@@ -615,7 +615,7 @@ export default function Home() {
                       alt={ev.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                     <div className="absolute top-4 right-4 w-14 h-14 rounded-xl bg-amber-500 flex flex-col items-center justify-center text-white shadow-lg">
                       <span className="font-black text-xl leading-none">
                         {ev.date}

@@ -27,7 +27,7 @@ function HeroSection() {
         </span>
         <h1 className="text-7xl md:text-[11vw] font-black leading-[0.8] tracking-tighter uppercase mb-6">
           FAITHFUL <br /> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F0C060] to-yellow-200">GIVING.</span>
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#F0C060] to-yellow-200">GIVING.</span>
         </h1>
         <p className="max-w-xl mx-auto text-white/40 text-lg md:text-xl font-light">
           Your generosity fuels our mission to spread the Gospel and serve the Lakeside community.
@@ -50,7 +50,7 @@ export default function DonatePage() {
       <HeroSection />
 
       {/* --- WHITE CONTENT SECTION --- */}
-      <section className="relative z-20 bg-[#FDFCF8] text-[#0F0C1E] rounded-t-[4rem] md:rounded-t-[8rem] pb-32">
+      <section className="relative z-20 bg-background text-[#0F0C1E] rounded-t-[4rem] md:rounded-t-[8rem] pb-32">
         
         {/* --- FORM CONTAINER --- */}
         <div className="relative -top-24 md:-top-40 z-30">
