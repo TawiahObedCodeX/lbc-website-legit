@@ -45,7 +45,7 @@ export default function DonationForm() {
                   className={`px-8 py-5 rounded-2xl font-black transition-all duration-300 ${
                     amount === val.toString()
                       ? "bg-[#0F0C1E] text-white shadow-lg scale-105"
-                      : "bg-[#FDFCF8] text-[#0F0C1E]/40 border border-black/5 hover:border-[#F0C060]"
+                      : "bg-background text-[#0F0C1E]/40 border border-black/5 hover:border-[#F0C060]"
                   }`}
                 >
                   ₵{val}
@@ -73,13 +73,13 @@ export default function DonationForm() {
               type="text"
               placeholder="Full Name"
               onChange={(e) => setDonorName(e.target.value)}
-              className="w-full bg-[#FDFCF8] border border-black/5 rounded-2xl p-6 font-bold text-[#0F0C1E] outline-none focus:border-[#F0C060] transition-all"
+              className="w-full bg-background border border-black/5 rounded-2xl p-6 font-bold text-[#0F0C1E] outline-none focus:border-[#F0C060] transition-all"
             />
             <input
               type="email"
               placeholder="Email Address"
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#FDFCF8] border border-black/5 rounded-2xl p-6 font-bold text-[#0F0C1E] outline-none focus:border-[#F0C060] transition-all"
+              className="w-full bg-background border border-black/5 rounded-2xl p-6 font-bold text-[#0F0C1E] outline-none focus:border-[#F0C060] transition-all"
             />
           </div>
 
@@ -92,7 +92,7 @@ export default function DonationForm() {
                 // @ts-ignore
                 initializePayment((ref) => alert("Blessings! " + ref.reference), () => {});
             }}
-            className="w-full py-8 rounded-[2rem] bg-[#0F0C1E] text-white font-black text-xl uppercase tracking-[0.4em] shadow-xl hover:bg-[#F0C060] hover:text-[#0F0C1E] transition-all disabled:opacity-20"
+            className="w-full py-8 rounded-4xl bg-[#0F0C1E] text-white font-black text-xl uppercase tracking-[0.4em] shadow-xl hover:bg-[#F0C060] hover:text-[#0F0C1E] transition-all disabled:opacity-20"
           >
             Sow My Seed
           </motion.button>

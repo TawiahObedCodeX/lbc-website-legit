@@ -8,6 +8,7 @@ export default function Footer() {
   const menu = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
     { label: "Ministers", href: "/ministers" },
     { label: "Services", href: "/services" },
     { label: "GIVE NOW", href: "/donation", highlight: true },
@@ -21,7 +22,7 @@ export default function Footer() {
 
       <div className="max-w-[1500px] mx-auto relative z-10">
         <div className="grid lg:grid-cols-12 gap-20">
-          
+
           {/* --- LEFT: THE STATEMENT --- */}
           <div className="lg:col-span-7 space-y-12">
             <motion.div
@@ -52,14 +53,14 @@ export default function Footer() {
 
           {/* --- RIGHT: THE BENTO INFO CARD --- */}
           <div className="lg:col-span-5">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-16 rounded-[4rem] relative overflow-hidden group"
             >
               {/* Decorative Corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-bl-[4rem] group-hover:bg-secondary/20 transition-all" />
-              
+
               <div className="relative z-10 space-y-12">
                 <div className="space-y-4">
                   <h3 className="text-secondary font-black tracking-widest text-xs uppercase">The Sanctuary</h3>
@@ -77,8 +78,8 @@ export default function Footer() {
                   </p>
                 </div>
 
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="inline-block bg-white text-primary px-10 py-5 rounded-full font-black tracking-widest text-sm hover:bg-secondary transition-all"
                 >
                   GET DIRECTIONS
@@ -89,10 +90,10 @@ export default function Footer() {
         </div>
 
         {/* --- LINKS NAVIGATION GRID --- */}
-        <div className="mt-32 grid grid-cols-2 md:grid-cols-5 gap-8 border-t border-white/10 pt-16">
+        <div className="mt-32 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 border-t border-white/10 pt-16">
           {menu.map((item) => (
-            <Link 
-              key={item.label} 
+            <Link
+              key={item.label}
               href={item.href}
               className={`text-[10px] font-black tracking-[0.4em] uppercase transition-all ${
                 item.highlight ? "text-secondary hover:text-white" : "text-white/30 hover:text-white"

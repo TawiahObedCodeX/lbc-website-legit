@@ -94,11 +94,11 @@ export default function DonatePage() {
               className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl group"
             >
               <img 
-                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070" 
+                src="/images/serviceskids.png" 
                 alt="Church Community" 
                 className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0C1E]/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0F0C1E]/60 to-transparent" />
               <div className="absolute bottom-10 left-10 right-10">
                 <p className="text-white/80 font-bold italic text-lg leading-tight">
                   "Generosity is the most natural outward expression of an inner attitude of faith."

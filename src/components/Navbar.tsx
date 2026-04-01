@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -18,17 +20,28 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
+    setDropdownOpen(false);
   }, [pathname]);
 
-  const menuItems = [
-    "Home",
-    "About",
-    "Services",
-    "Ministries",
-    "Gallery",
-    "Donation",
-    "Contact",
-  ];
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Primary links shown directly in the nav bar
+  const primaryItems = ["Home", "About", "Services", "Blog"];
+
+  // Secondary links hidden under "More" dropdown
+  const moreItems = ["Ministries", "Gallery", "Contact"];
+
+  // All items combined (for mobile full-screen menu)
+  const allItems = [...primaryItems, ...moreItems, "Donation"];
 
   const getHref = (item: string) =>
     item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`;
@@ -38,6 +51,8 @@ export default function Navbar() {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
   };
+
+  const isMoreActive = moreItems.some((item) => isActive(item));
 
   return (
     <nav
@@ -75,7 +90,9 @@ export default function Navbar() {
         {/* --- DESKTOP MENU (lg and above) --- */}
         <div className="hidden lg:flex items-center gap-4 xl:gap-6">
           <div className="flex items-center gap-1 xl:gap-2 bg-white/5 px-4 xl:px-5 py-2.5 rounded-full border border-white/10 backdrop-blur-md">
-            {menuItems.map((item, i) => {
+
+            {/* Primary nav links */}
+            {primaryItems.map((item, i) => {
               const active = isActive(item);
               return (
                 <motion.div
@@ -107,6 +124,81 @@ export default function Navbar() {
                 </motion.div>
               );
             })}
+
+            {/* "More" Dropdown */}
+            <motion.div
+              ref={dropdownRef}
+              initial={{ y: -10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: primaryItems.length * 0.08 }}
+              className="relative"
+            >
+              <button
+                onClick={() => setDropdownOpen((prev) => !prev)}
+                className={`relative flex items-center gap-1 px-2 xl:px-3 py-1.5 rounded-full text-[10px] xl:text-[11px] font-black uppercase tracking-[0.15em] xl:tracking-[0.2em] transition-all ${
+                  isMoreActive
+                    ? "text-primary bg-secondary shadow-[0_0_12px_rgba(197,160,89,0.4)]"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                More
+                <motion.svg
+                  animate={{ rotate: dropdownOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="w-3 h-3"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </motion.svg>
+              </button>
+
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 bg-[#0F0C1E]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden"
+                  >
+                    {/* Decorative top accent */}
+                    <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-secondary to-transparent" />
+
+                    <div className="py-2 px-2">
+                      {moreItems.map((item) => {
+                        const active = isActive(item);
+                        return (
+                          <Link
+                            key={item}
+                            href={getHref(item)}
+                            onClick={() => setDropdownOpen(false)}
+                            className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[10px] xl:text-[11px] font-black uppercase tracking-[0.15em] transition-all group ${
+                              active
+                                ? "text-primary bg-secondary"
+                                : "text-white/70 hover:text-white hover:bg-white/5"
+                            }`}
+                          >
+                            {active && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                            )}
+                            {!active && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-secondary/40 shrink-0 group-hover:bg-secondary transition-colors" />
+                            )}
+                            {item}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -122,7 +214,7 @@ export default function Navbar() {
         {/* --- TABLET MENU (md to lg) --- */}
         <div className="hidden md:flex lg:hidden items-center gap-3">
           <div className="flex items-center gap-1 bg-white/5 px-3 py-2 rounded-full border border-white/10 backdrop-blur-md">
-            {menuItems.slice(0, 5).map((item) => {
+            {["Home", "About", "Services", "Blog"].map((item) => {
               const active = isActive(item);
               return (
                 <Link
@@ -195,7 +287,7 @@ export default function Navbar() {
               <h1 className="text-[40vw] font-black leading-none">LBC</h1>
             </div>
 
-            {/* Current Page Indicator */}
+            {/* Section labels for mobile */}
             <motion.p
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -204,12 +296,14 @@ export default function Navbar() {
             >
               You are here →{" "}
               <span className="text-secondary">
-                {menuItems.find((item) => isActive(item)) ?? "Home"}
+                {allItems.find((item) => isActive(item)) ?? "Home"}
               </span>
             </motion.p>
 
-            <div className="flex flex-col items-center gap-3 sm:gap-5 w-full max-w-sm sm:max-w-none">
-              {menuItems.map((item, i) => {
+            <div className="flex flex-col items-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
+
+              {/* Primary links */}
+              {primaryItems.map((item, i) => {
                 const active = isActive(item);
                 return (
                   <motion.div
@@ -244,11 +338,62 @@ export default function Navbar() {
                 );
               })}
 
+              {/* Divider with "More" label */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.18 + primaryItems.length * 0.07 }}
+                className="flex items-center gap-4 w-full max-w-xs sm:max-w-sm my-1"
+              >
+                <div className="flex-1 h-px bg-white/10" />
+                <span className="text-[9px] font-black tracking-[0.4em] uppercase text-white/30">More</span>
+                <div className="flex-1 h-px bg-white/10" />
+              </motion.div>
+
+              {/* More links */}
+              {moreItems.map((item, i) => {
+                const active = isActive(item);
+                return (
+                  <motion.div
+                    key={item}
+                    initial={{ x: 60, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.18 + (primaryItems.length + 1 + i) * 0.07,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="w-full text-center"
+                  >
+                    <Link
+                      href={getHref(item)}
+                      className={`relative inline-flex items-center gap-3 text-3xl sm:text-4xl md:text-5xl font-black transition-colors tracking-tighter ${
+                        active ? "text-secondary" : "text-white/60 hover:text-secondary"
+                      }`}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {active && (
+                        <motion.span
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          className="absolute -left-6 sm:-left-8 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(197,160,89,0.8)]"
+                        />
+                      )}
+                      {item}
+                      {active && (
+                        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-secondary/70 self-end mb-1 sm:mb-2">
+                          ← current
+                        </span>
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="mt-6 sm:mt-10"
+                transition={{ delay: 0.8 }}
+                className="mt-6 sm:mt-8"
               >
                 <Link
                   href="/donation"

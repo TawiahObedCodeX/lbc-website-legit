@@ -41,9 +41,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-background text-primary overflow-x-hidden selection:bg-secondary selection:text-primary">
+      {/*
+        IMPORTANT: overflow-x-hidden is intentionally removed from <body>.
+        Placing overflow on <body> causes mobile/Safari browsers to treat it
+        as a scroll container, which breaks position:fixed children (e.g. the
+        mobile nav overlay). The overflow is applied on the inner wrapper div
+        instead, which is safe and achieves the same horizontal-clip effect.
+      */}
+      <body className="antialiased bg-background text-primary selection:bg-secondary selection:text-primary">
         <Suspense fallback={<LoadingScreen />}>
-          <div className="relative flex flex-col min-h-screen">
+          <div className="relative flex flex-col min-h-screen overflow-x-hidden">
             <Navbar />
             <main className="grow">{children}</main>
             <Footer />

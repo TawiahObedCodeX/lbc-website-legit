@@ -17,9 +17,8 @@ const ministries = [
       "Technical Skill Workshops"
     ],
     images: [
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000",
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000"
+      "/images/menministries.jpg",
+      "/images/menministries2.jpg",
     ]
   },
   {
@@ -35,9 +34,8 @@ const ministries = [
       "Outreach to Local Shelters"
     ],
     images: [
-      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1000",
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000",
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000"
+      "/images/womenministries.png",
+      "/images/womenministries2.png",
     ]
   },
   {
@@ -53,9 +51,8 @@ const ministries = [
       "Summer Mission Trips"
     ],
     images: [
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000",
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=1000",
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000"
+      "/images/youthministries.png",
+      "/images/serviceyouth.png",
     ]
   },
   {
@@ -71,9 +68,8 @@ const ministries = [
       "Annual Vacation Bible School"
     ],
     images: [
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000",
-      "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1000",
-      "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?q=80&w=1000"
+      "/images/childministries.png",
+      "/images/childrenministries2.png",
     ]
   }
 ];

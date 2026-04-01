@@ -21,3 +21,25 @@
     100% { transform: scale(1.15) translate(-2%, -2%); }
   }
 }
+
+/* ===== REMOVE ALL SCROLLBARS (GLOBAL) ===== */
+
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* IE / old Edge */
+body {
+  -ms-overflow-style: none;
+}
+
+/* Prevent accidental horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
