@@ -153,15 +153,7 @@ export default function MinistriesPage() {
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#F0C060] z-50 origin-[0%]" style={{ scaleX }} />
 
       {/* --- CATCHY INTRO --- */}
-      <section className="h-[90vh] bg-[#0F0C1E] flex flex-col justify-center px-6 md:px-20 overflow-hidden relative">
-        <motion.div 
-          animate={{ x: [-20, 20, -20] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-0 text-white/2 text-[40vw] font-black italic whitespace-nowrap leading-none select-none pointer-events-none"
-        >
-          LBC FAMILY
-        </motion.div>
-        
+      <section className="h-[90vh] bg-[#0F0C1E] flex flex-col justify-center px-6 md:px-20 overflow-hidden relative">  
         <motion.h4 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
