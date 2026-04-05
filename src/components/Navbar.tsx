@@ -206,7 +206,7 @@ export default function Navbar() {
               href="/donation"
               className="bg-secondary text-primary px-6 xl:px-8 py-3 xl:py-4 rounded-full font-black text-[10px] xl:text-xs tracking-widest shadow-[0_10px_20px_rgba(197,160,89,0.3)] hover:bg-white transition-all whitespace-nowrap"
             >
-              GIVE NOW
+              DONATE NOW
             </Link>
           </motion.div>
         </div>
@@ -400,7 +400,7 @@ export default function Navbar() {
                   className="bg-secondary text-primary px-10 sm:px-14 py-4 sm:py-5 rounded-full font-black text-base sm:text-xl tracking-widest shadow-[0_10px_30px_rgba(197,160,89,0.35)] hover:bg-white transition-all"
                   onClick={() => setMobileOpen(false)}
                 >
-                  GIVE NOW
+                  DONATE NOW
                 </Link>
               </motion.div>
             </div>
